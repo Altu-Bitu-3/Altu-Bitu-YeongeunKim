@@ -8,11 +8,7 @@ int serialSum(const string& a){
     int k = 0;
     for(int i = 0; i < a.length(); i++){
         if(isdigit(a[i]) != 0){
-            int tmp = a[i] - '0';
-            k += tmp;
-        }
-        else{
-            continue;
+            k += a[i] - '0';
         }
     }
     return k;

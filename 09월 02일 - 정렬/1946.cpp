@@ -4,31 +4,18 @@
 
 using namespace std;
 
-struct recruit {
-	int paper, interview;
-};
 
-bool cmp(const recruit& a, const recruit& b) {
-	return a.paper < b.paper;
-}
+int count(int k, vector<pair<int, int>> recruit) {
 
-int count(int k) {
-
-	vector<recruit> arr(k);
-
-	for (int i = 0; i < k; i++) {
-		cin >> arr[i].paper >> arr[i].interview;
-	}
-
-	sort(arr.begin(), arr.end(), cmp);
+	sort(recruit.begin(), recruit.end());
 
 	int sum = 1;
-	int tmp = arr[0].interview;
+	int tmp = recruit[0].second;
 
 	for (int i = 1; i < k; i++) {
-		if (arr[i].interview < tmp) {
+		if (recruit[i].second < tmp) {
 			sum += 1;
-			tmp = arr[i].interview;
+			tmp = recruit[i].second;
 		}
 	}
 
@@ -38,13 +25,17 @@ int count(int k) {
 int main() {
 
 	int n;
-
 	cin >> n;
 
-	for (int i = 0; i < n; i++) {
+
+	while (n--) {
 		int k;
 		cin >> k;
-		cout << count(k) << "\n";
+		vector<pair<int, int>> recruit(k);
+		for (int i = 0; i < k; i++) {
+			cin >> recruit[i].first >> recruit[i].second;
+		}
+		cout << count(k, recruit) << "\n";
 	}
 
 	return 0;

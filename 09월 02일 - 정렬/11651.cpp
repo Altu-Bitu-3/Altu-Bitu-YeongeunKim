@@ -4,17 +4,13 @@
 
 using namespace std;
 
-struct coor {
-	int x, y;
-};
+bool cmp(const pair<int, int> a, const pair<int, int> b) {
 
-bool cmp(const coor& a, const coor& b) {
-
-	if (a.y != b.y) {
-		return a.y < b.y;
+	if (a.second != b.second) {
+		return a.second < b.second;
 	}
 
-	return a.x < b.x;
+	return a.first < b.first;
 }
 
 int main() {
@@ -23,16 +19,16 @@ int main() {
 
 	cin >> n;
 
-	vector<coor> arr(n);
+	vector<pair<int, int>> arr(n);
 
 	for (int i = 0; i < n; i++) {
-		cin >> arr[i].x >> arr[i].y;
+		cin >> arr[i].first >> arr[i].second;
 	}
 
 	sort(arr.begin(), arr.end(), cmp);
-	
+
 	for (int i = 0; i < n; i++) {
-		cout << arr[i].x << " " << arr[i].y << "\n";
+		cout << arr[i].first << " " << arr[i].second << "\n";
 	}
 	return 0;
 }
