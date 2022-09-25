@@ -5,8 +5,8 @@
 using namespace std;
 
 void setState(vector<pair<int, int>>& state) {
-	//0ºÎÅÍ °¢°¢ ºÏµ¿³²¼­
-	//¿¹¸¦ µé¾î ºÏÂÊÀ» ÇâÇÏ°í ÀÖ´Ù¸é yÁÂÇ¥¸¸ 1Áõ°¡ÇÏ¹Ç·Î second¸¸ 1·Î ¼³Á¤
+	//0ë¶€í„° ê°ê° ë¶ë™ë‚¨ì„œ
+	//ì˜ˆë¥¼ ë“¤ì–´ ë¶ìª½ì„ í–¥í•˜ê³  ìˆë‹¤ë©´ yì¢Œí‘œë§Œ 1ì¦ê°€í•˜ë¯€ë¡œ secondë§Œ 1ë¡œ ì„¤ì •
 	state[0].first = 0;
 	state[0].second = 1;
 	state[1].first = 1;
@@ -18,22 +18,22 @@ void setState(vector<pair<int, int>>& state) {
 }
 
 void turtle(string s) {
-	//¿ŞÂÊ ²ÀÁöÁ¡À» ÀúÀåÇÒ °ª
+	//ì™¼ìª½ ê¼­ì§€ì ì„ ì €ì¥í•  ê°’
 	pair<int, int> left;
 	left.first = 0;
 	left.second = 0;
 
-	//¿À¸¥ÂÊ ²ÀÁöÁ¡À» ÀúÀåÇÒ °ª 
+	//ì˜¤ë¥¸ìª½ ê¼­ì§€ì ì„ ì €ì¥í•  ê°’ 
 	pair<int, int> right;
 	right.first = 0;
 	right.second = 0;
 
-	//ÇöÀç À§Ä¡ ÁÂÇ¥
+	//í˜„ì¬ ìœ„ì¹˜ ì¢Œí‘œ
 	pair<int, int> now;
 	now.first = 0;
 	now.second = 0;
 
-	//ÇöÀç ¾î´À ¹æÇâÀ» ÇâÇÏ°í ÀÖ´ÂÁö ÆÇ´ÜÇÒ ¹è¿­
+	//í˜„ì¬ ì–´ëŠ ë°©í–¥ì„ í–¥í•˜ê³  ìˆëŠ”ì§€ íŒë‹¨í•  ë°°ì—´
 	vector<pair<int, int>> state(4);
 	setState(state);
 
@@ -42,16 +42,16 @@ void turtle(string s) {
 	for (int i = 0; i < s.length(); i++) {
 		switch (s[i]) {
 		case 'F':
-			//¾ÕÀ¸·Î °¡´Â ¸í·É¿¡´Â 1À» °öÇØ¼­ ´õÇØÁÜ.
+			//ì•ìœ¼ë¡œ ê°€ëŠ” ëª…ë ¹ì—ëŠ” 1ì„ ê³±í•´ì„œ ë”í•´ì¤Œ.
 			now.first += 1 * state[index].first;
 			now.second += 1 * state[index].second;
 			break;
 		case 'B':
-			//µÚ·Î °¡´Â ¸í·ÉÀº -1À» °öÇØ¼­ ´õÇØÁÜ
+			//ë’¤ë¡œ ê°€ëŠ” ëª…ë ¹ì€ -1ì„ ê³±í•´ì„œ ë”í•´ì¤Œ
 			now.first += -1 * state[index].first;
 			now.second += -1 * state[index].second;
 			break;
-		//È¸ÀüÀÏ ¶§´Â ÇöÀç »óÅÂ ¹Ù²Ù´Â ÀÎµ¦½º °ª Á¶Á¤
+		//íšŒì „ì¼ ë•ŒëŠ” í˜„ì¬ ìƒíƒœ ë°”ê¾¸ëŠ” ì¸ë±ìŠ¤ ê°’ ì¡°ì •
 		case 'L':
 			index = (index + 3) % 4;
 			break;
@@ -59,7 +59,7 @@ void turtle(string s) {
 			index = (index + 1) % 4;
 			break;
 		}
-		//°¢ ²ÀÁöÁ¡ÀÇ °ª ¾÷µ¥ÀÌÆ®
+		//ê° ê¼­ì§€ì ì˜ ê°’ ì—…ë°ì´íŠ¸
 		left.first = min(left.first, now.first);
 		left.second = min(left.second, now.second);
 		right.first = max(right.first, now.first);

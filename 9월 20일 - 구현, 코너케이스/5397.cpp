@@ -4,26 +4,26 @@
 using namespace std;
 
 void password(string s) {
-	deque<char> left; //ÇöÀç Ä¿¼­ÀÇ ¿ŞÂÊ
-	deque<char> right; //ÇöÀç Ä¿¼­ÀÇ ¿À¸¥ÂÊ
+	deque<char> left; //í˜„ì¬ ì»¤ì„œì˜ ì™¼ìª½
+	deque<char> right; //í˜„ì¬ ì»¤ì„œì˜ ì˜¤ë¥¸ìª½
 
 	for (int i = 0; i < s.length(); i++) {
 		switch (s[i]) {
-		case '<': //Ä¿¼­¸¦ ¿ŞÂÊÀ¸·Î ¿Å±â´Â °æ¿ì
+		case '<': //ì»¤ì„œë¥¼ ì™¼ìª½ìœ¼ë¡œ ì˜®ê¸°ëŠ” ê²½ìš°
 			if (!left.empty()) {
 				char tmp = left.back();
 				left.pop_back();
 				right.push_front(tmp);
 			}
 			break;
-		case '>': //Ä¿¼­¸¦ ¿À¸¥ÂÊÀ¸·Î ¿Å±â´Â °æ¿ì
+		case '>': //ì»¤ì„œë¥¼ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì˜®ê¸°ëŠ” ê²½ìš°
 			if (!right.empty()) {
 				char tmp = right.front();
 				right.pop_front();
 				left.push_back(tmp);
 			}
 			break;
-		case '-':  //Ä¿¼­ ¾Õ±ÛÀÚ¸¦ Áö¿ì´Â °æ¿ì
+		case '-':  //ì»¤ì„œ ì•ê¸€ìë¥¼ ì§€ìš°ëŠ” ê²½ìš°
 			if (!left.empty()) {
 				left.pop_back();
 			}
@@ -54,7 +54,7 @@ int main() {
 	while (n--) {
 		string s;
 		cin >> s;
-		password(s); //ÀÔ·Â ¹ŞÀº ÈÄ °¢ ÄÉÀÌ½º¿¡ ´ëÇØ ¿¬»ê ½ÇÇà
+		password(s); //ì…ë ¥ ë°›ì€ í›„ ê° ì¼€ì´ìŠ¤ì— ëŒ€í•´ ì—°ì‚° ì‹¤í–‰
 	}
 
 	return 0;
